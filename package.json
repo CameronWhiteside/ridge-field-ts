@@ -1,0 +1,26 @@
+{
+  "name": "ridge-field-ts",
+  "version": "0.1.0",
+  "description": "Deterministic synthetic-fingerprint synthesis: an anisotropic particle-relaxation model (Düring et al. 2019) that grows genuine friction ridges from a seed profile. Framework-agnostic, zero runtime dependencies.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Cameron Whiteside",
+  "repository": { "type": "git", "url": "git+https://github.com/CameronWhiteside/ridge-field-ts.git" },
+  "homepage": "https://github.com/CameronWhiteside/ridge-field-ts#readme",
+  "keywords": ["fingerprint", "friction-ridge", "generative", "deterministic", "svg", "anisotropic", "biometrics"],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" } },
+  "files": ["dist", "README.md", "LICENSE"],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "npm run build",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  }
+}
