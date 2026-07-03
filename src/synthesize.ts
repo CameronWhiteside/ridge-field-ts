@@ -2,11 +2,11 @@
 // the real relaxation (deriveField -> simulate -> extractRidges -> toSvgPaths)
 // and reports the settle time so callers can budget it.
 
-import type { FingerprintPrint, FingerprintProfile } from './types';
-import { deriveField, profileHash } from './field';
-import { simulate, type SimulateOptions } from './simulate';
-import { extractRidges, type ExtractOptions } from './ridges';
-import { toSvgPaths, DEFAULT_VIEW, type SvgView } from './svg';
+import type { FingerprintPrint, FingerprintProfile } from './types.js';
+import { deriveField, profileHash } from './field.js';
+import { simulate, type SimulateOptions } from './simulate.js';
+import { extractRidges, type ExtractOptions } from './ridges.js';
+import { toSvgPaths, DEFAULT_VIEW, type SvgView } from './svg.js';
 
 export interface SynthesizeOptions {
   simulate?: SimulateOptions;

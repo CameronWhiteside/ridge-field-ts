@@ -21,14 +21,14 @@ export type {
   FingerprintHandprint,
   FingerprintProfile,
   FingerprintPrint,
-} from './types';
+} from './types.js';
 
-export { deriveField, profileHash, choosePatternClass, ridgeSpacingFor, particleCountFor } from './field';
-export { simulate, isSettled, type SimulateOptions } from './simulate';
-export { extractRidges, type ExtractOptions } from './ridges';
-export { toSvgPaths, viewOfWidth, DEFAULT_VIEW, type SvgView } from './svg';
-export { synthesize, type SynthesizeOptions } from './synthesize';
-export { FINGERTIP, isInside, boundaryValue, type Boundary } from './boundary';
+export { deriveField, profileHash, choosePatternClass, ridgeSpacingFor, particleCountFor } from './field.js';
+export { simulate, isSettled, type SimulateOptions } from './simulate.js';
+export { extractRidges, type ExtractOptions } from './ridges.js';
+export { toSvgPaths, viewOfWidth, DEFAULT_VIEW, type SvgView } from './svg.js';
+export { synthesize, type SynthesizeOptions } from './synthesize.js';
+export { FINGERTIP, isInside, boundaryValue, type Boundary } from './boundary.js';
 export {
   coeffsForSpacing,
   fR,
@@ -38,5 +38,5 @@ export {
   BASE_COEFFS,
   BASE_SPACING,
   type ForceCoeffs,
-} from './forces';
-export { fnv1a32, mulberry32 } from './hash';
+} from './forces.js';
+export { fnv1a32, mulberry32 } from './hash.js';

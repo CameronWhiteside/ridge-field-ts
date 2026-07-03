@@ -4,8 +4,8 @@
 // ridge lines, not faceted polylines. Monochrome by design: a fingerprint is
 // ink on paper, so no per-ridge colour is emitted here.
 
-import type { Ridge, Vec2 } from './types';
-import { FINGERTIP, type Boundary } from './boundary';
+import type { Ridge, Vec2 } from './types.js';
+import { FINGERTIP, type Boundary } from './boundary.js';
 
 export interface SvgView {
   width: number;

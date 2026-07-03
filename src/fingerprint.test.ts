@@ -1,12 +1,12 @@
 import { describe, it, expect } from 'vitest';
-import { fnv1a32, mulberry32 } from './hash';
-import { fR, fA, fS, fL, coeffsForSpacing } from './forces';
-import { deriveField, profileHash, choosePatternClass, ridgeSpacingFor, particleCountFor } from './field';
-import { simulate } from './simulate';
-import { extractRidges } from './ridges';
-import { synthesize } from './synthesize';
-import { boundaryValue } from './boundary';
-import type { FingerprintProfile, PatternClass, Singularity } from './types';
+import { fnv1a32, mulberry32 } from './hash.js';
+import { fR, fA, fS, fL, coeffsForSpacing } from './forces.js';
+import { deriveField, profileHash, choosePatternClass, ridgeSpacingFor, particleCountFor } from './field.js';
+import { simulate } from './simulate.js';
+import { extractRidges } from './ridges.js';
+import { synthesize } from './synthesize.js';
+import { boundaryValue } from './boundary.js';
+import type { FingerprintProfile, PatternClass, Singularity } from './types.js';
 
 // A small deterministic profile plus fast simulate options so the tests that
 // run the full relaxation stay quick without changing the maths under test.

@@ -9,10 +9,10 @@
 // A uniform spatial-bucket grid (cell size = force cutoff) makes each step
 // O(N * localNeighbors) rather than O(N^2).
 
-import type { OrientationField, Particle, ParticleState, Vec2 } from './types';
-import { coeffsForSpacing, fL, fS, type ForceCoeffs } from './forces';
-import { clampInside, FINGERTIP, isInside, type Boundary } from './boundary';
-import { mulberry32 } from './hash';
+import type { OrientationField, Particle, ParticleState, Vec2 } from './types.js';
+import { coeffsForSpacing, fL, fS, type ForceCoeffs } from './forces.js';
+import { clampInside, FINGERTIP, isInside, type Boundary } from './boundary.js';
+import { mulberry32 } from './hash.js';
 
 export interface SimulateOptions {
   /** Number of particles (defaults to field.particleCount). */

@@ -3,7 +3,7 @@
 // than a square. A superellipse (rounded-rectangle-to-ellipse family) gives a
 // slightly fuller fingertip than a plain ellipse while staying convex.
 
-import type { Vec2 } from './types';
+import type { Vec2 } from './types.js';
 
 export interface Boundary {
   cx: number;

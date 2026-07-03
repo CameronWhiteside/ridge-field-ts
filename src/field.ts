@@ -29,8 +29,8 @@ import type {
   PatternClass,
   Singularity,
   Vec2,
-} from './types';
-import { fnv1a32, mulberry32, subSeed, unitFloat } from './hash';
+} from './types.js';
+import { fnv1a32, mulberry32, subSeed, unitFloat } from './hash.js';
 
 /** Domain centre the templates orbit (y increases downward, screen-like). */
 const CENTRE: Vec2 = { x: 0.5, y: 0.52 };

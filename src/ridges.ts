@@ -12,8 +12,8 @@
 // result is combed, roughly-parallel ink that curves around the cores and
 // deltas, the way a rolled print reads.
 
-import type { Minutia, OrientationField, ParticleState, Ridge, Vec2 } from './types';
-import { boundaryValue, FINGERTIP, type Boundary } from './boundary';
+import type { Minutia, OrientationField, ParticleState, Ridge, Vec2 } from './types.js';
+import { boundaryValue, FINGERTIP, type Boundary } from './boundary.js';
 
 interface Grid {
   cell: number;
