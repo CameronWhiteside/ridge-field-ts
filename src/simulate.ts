@@ -11,7 +11,7 @@
 
 import type { OrientationField, Particle, ParticleState, Vec2 } from './types.js';
 import { coeffsForSpacing, fL, fS, type ForceCoeffs } from './forces.js';
-import { clampInside, FINGERTIP, isInside, type Boundary } from './boundary.js';
+import { boundaryArea, clampInside, FINGERTIP, isInside, type Boundary } from './boundary.js';
 import { mulberry32 } from './hash.js';
 
 export interface SimulateOptions {
@@ -122,7 +122,10 @@ export function simulate(field: OrientationField, opts: SimulateOptions = {}): P
   const boundary = opts.boundary ?? FINGERTIP;
   const spacing = field.ridgeSpacing;
   const coeffs = coeffsForSpacing(spacing);
-  const count = opts.count ?? field.particleCount;
+  // Hold ridge density constant as the domain shape changes: the field's count
+  // is sized for the fingertip, so scale it by the area of the actual boundary.
+  const count =
+    opts.count ?? Math.round(field.particleCount * (boundaryArea(boundary) / boundaryArea(FINGERTIP)));
   const iterations = opts.iterations ?? DEFAULTS.iterations;
   const dt = opts.dt ?? DEFAULTS.dt;
   const seed = opts.seed ?? DEFAULTS.seed;

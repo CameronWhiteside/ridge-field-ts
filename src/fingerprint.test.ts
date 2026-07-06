@@ -5,7 +5,7 @@ import { deriveField, profileHash, choosePatternClass, ridgeSpacingFor, particle
 import { simulate } from './simulate.js';
 import { extractRidges } from './ridges.js';
 import { synthesize } from './synthesize.js';
-import { boundaryValue } from './boundary.js';
+import { boundaryValue, SQUARE, FINGERTIP } from './boundary.js';
 import type { FingerprintProfile, PatternClass, Singularity } from './types.js';
 
 // A small deterministic profile plus fast simulate options so the tests that
@@ -271,5 +271,44 @@ describe('choosePatternClass — deterministic pick', () => {
     const p = profile();
     const h = profileHash(p);
     expect(choosePatternClass(p, h)).toBe(choosePatternClass(p, h));
+  });
+});
+
+describe('SQUARE boundary — ridges fill the corners', () => {
+  // Points in the four corners of the SQUARE box (both axes near the edge).
+  const cornerPoints = (paths: ReturnType<typeof synthesize>['ridges']): number => {
+    let n = 0;
+    for (const r of paths) {
+      for (const q of r.points) {
+        const u = Math.abs((q.x - 0.5) / 0.47);
+        const v = Math.abs((q.y - 0.5) / 0.47);
+        if (u > 0.85 && v > 0.85) n++;
+      }
+    }
+    return n;
+  };
+
+  it('SQUARE lands ink in the corners where the fingertip ellipse cannot', () => {
+    const p = profile({ totalMarks: 200 });
+    const square = synthesize(p, { boundary: SQUARE, simulate: { iterations: 90 } });
+    const tip = synthesize(p, { boundary: FINGERTIP, simulate: { iterations: 90 } });
+    // A true square reaches its corners; an ellipse leaves them empty.
+    expect(cornerPoints(square.ridges)).toBeGreaterThan(20);
+    expect(cornerPoints(square.ridges)).toBeGreaterThan(cornerPoints(tip.ridges) * 3);
+  });
+
+  it('boundaryValue is the L-infinity norm for a square (crisp corners)', () => {
+    // The corner (rx, ry) sits exactly on a square edge (value 1), but well
+    // outside an ellipse (value 2).
+    const corner = { x: 0.5 + 0.47, y: 0.5 + 0.47 };
+    expect(boundaryValue(corner, SQUARE)).toBeCloseTo(1, 6);
+    expect(boundaryValue(corner, FINGERTIP)).toBeGreaterThan(1.5);
+  });
+
+  it('is deterministic for a square domain', () => {
+    const p = profile({ totalMarks: 120 });
+    const a = synthesize(p, { boundary: SQUARE, simulate: { iterations: 60 } });
+    const b = synthesize(p, { boundary: SQUARE, simulate: { iterations: 60 } });
+    expect(a.svgPaths).toEqual(b.svgPaths);
   });
 });

@@ -28,7 +28,7 @@ export { simulate, isSettled, type SimulateOptions } from './simulate.js';
 export { extractRidges, type ExtractOptions } from './ridges.js';
 export { toSvgPaths, viewOfWidth, DEFAULT_VIEW, type SvgView } from './svg.js';
 export { synthesize, type SynthesizeOptions } from './synthesize.js';
-export { FINGERTIP, isInside, boundaryValue, type Boundary } from './boundary.js';
+export { FINGERTIP, SQUARE, isInside, boundaryValue, boundaryArea, type Boundary } from './boundary.js';
 export {
   coeffsForSpacing,
   fR,
